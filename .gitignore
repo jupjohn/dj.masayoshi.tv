@@ -690,5 +690,7 @@ FodyWeavers.xsd
 # Start of user-defined ignores
 
 *.db
+*.db-shm
+*.db-wal
 
 # End of user-defined ignores
