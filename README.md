@@ -16,7 +16,7 @@ This is a plug.dj-inspired webapp with Twitch integration, for sharing music.
 - [ ] Page styling & pollish
 - [ ] Queue/room moderation (Twitch mod list sync)
 - [ ] Endpoint to get current media (for StreamElements/Fossabot !song commands etc.)
-- [ ] ???
+- [ ] Follower/sub/VIP/mod-only rooms?
 - [ ] ???
 - [ ] ???
 - [ ] Chat integration, submissions?
