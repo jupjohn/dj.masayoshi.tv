@@ -7,6 +7,28 @@
     <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js" integrity="sha384-/TgkGk7p307TH7EXJDuUlgG3Ce1UVolAOFopFekQkkXihi5u/6OCvVKyz1W+idaz" crossorigin="anonymous"></script>
 </head>
 <body>
-    <span>stub</span>
+<!-- NOTE(jupjohn): try to keep as much in here as you can, so backend req failures keep the same visual structure as successes -->
+<nav>
+    <!-- NOTE: This will be replaced with either a "Login with Twitch" button, or a logged-in user control -->
+    <!-- NOTE: need to show a "create room" button somewhere, in the future -->
+    <h1>Masayoshi DJ</h1>
+    <div hx-get="/api/v1/user/auth-indicator" hx-trigger="load" class="user-auth-state"></div>
+</nav>
+<main>
+    <div class="room-list">
+        <h2>Following</h2>
+        <ul hx-get="/api/v1/rooms/following" hx-trigger="load" hx-sync=".user-auth-state:queue all">Loading (imagine the animation)</ul>
+    </div>
+    <div class="room-list">
+        <!-- this could load first, the followers? -->
+        <h2>Discover</h2>
+        <ul hx-get="/api/v1/rooms/discover" hx-trigger="load">Loading (imagine the animation)</ul>
+    </div>
+</main>
+<footer>
+    <p>
+        This is a footer xd
+    </p>
+</footer>
 </body>
 </html>
