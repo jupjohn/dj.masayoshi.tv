@@ -1,4 +1,5 @@
 using FastEndpoints;
+using MasayoshiDj;
 using MasayoshiDj.Features.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddApplicationAuthentication();
 
 builder.Services.AddSingleton(TimeProvider.System);
-builder.Services.AddFastEndpoints();
+builder.Services.AddFastEndpoints(options =>
+{
+    options.DisableAutoDiscovery = true;
+    options.SourceGeneratorDiscoveredTypes = DiscoveredTypes.All;
+});
 
 var app = builder.Build();
 
@@ -14,8 +19,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseHttpsRedirection();
-
-app.UseFastEndpoints();
+app.UseFastEndpoints(config =>
+{
+    config.Binding.ReflectionCache.AddFromMasayoshiDj();
+});
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
