@@ -15,13 +15,14 @@ public class AuthIndicatorEndpoint : EndpointWithoutRequest
 
     public override Task HandleAsync(CancellationToken cancellation)
     {
-        if (HttpContext.User.Identity?.IsAuthenticated is not true)
+        var user = HttpContext.User.Twitch;
+        if (user is null)
         {
             // not authed
             return Send.HtmlAsync("<a href=\"/login\">Login with Twitch</a>", cancellation);
         }
 
-        var (id, _, displayName) = HttpContext.User.Twitch!.Value;
+        var (id, _, displayName) = user.Value;
         return Send.HtmlAsync(
             $"""
              <span>Logged in as {displayName} ({id})</span>
