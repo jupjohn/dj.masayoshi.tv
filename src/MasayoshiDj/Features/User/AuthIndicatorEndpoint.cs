@@ -1,7 +1,5 @@
-using System.Diagnostics.CodeAnalysis;
 using FastEndpoints;
 using MasayoshiDj.Features.Authentication.Twitch;
-using Void = FastEndpoints.Void;
 
 namespace MasayoshiDj.Features.User;
 
@@ -30,17 +28,5 @@ public class AuthIndicatorEndpoint : EndpointWithoutRequest
              <br>
              <a href="/logout">Logout</a>
              """, cancellation);
-    }
-}
-
-public static class ResponseExtensions
-{
-    extension<T1, T2>(ResponseSender<T1, T2> sender) where T1 : notnull
-    {
-        // TODO(jupjohn): move out to shared extension class
-        public Task<Void> HtmlAsync(
-            [StringSyntax("html")] string html,
-            CancellationToken cancellation = default
-        ) => sender.StringAsync(html, StatusCodes.Status200OK, "text/html; charset=utf-8", cancellation);
     }
 }
