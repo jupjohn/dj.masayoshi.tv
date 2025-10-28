@@ -13,6 +13,7 @@ This is a plug.dj-inspired webapp with Twitch integration, for sharing music.
 - [ ] User YT link submission to queue (with video metadata fetching for timing, title etc.)
 - [ ] Queue display (SSE)
 - [ ] YT Media player (SSE updates)
+- [ ] Page styling & pollish
 - [ ] Queue/room moderation (Twitch mod list sync)
 - [ ] Endpoint to get current media (for StreamElements/Fossabot !song commands etc.)
 - [ ] ???
