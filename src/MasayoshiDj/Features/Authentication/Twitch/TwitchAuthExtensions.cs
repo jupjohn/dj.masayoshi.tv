@@ -2,7 +2,7 @@ using System.Net.Http.Headers;
 using System.Security.Claims;
 using Microsoft.Extensions.Options;
 
-namespace MasayoshiDj.Authentication.Twitch;
+namespace MasayoshiDj.Features.Authentication.Twitch;
 
 public static class TwitchAuthExtensions
 {

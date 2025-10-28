@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace MasayoshiDj.Authentication.Twitch;
+namespace MasayoshiDj.Features.Authentication.Twitch;
 
 public class TwitchAuthOptions : IValidatableObject, IKeyedOptions
 {

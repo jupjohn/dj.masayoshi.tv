@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasayoshiDj", "MasayoshiDj\MasayoshiDj.csproj", "{6A07334A-B259-4BDD-8FCE-CDF73324E5D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasayoshiDj", "src\MasayoshiDj\MasayoshiDj.csproj", "{6A07334A-B259-4BDD-8FCE-CDF73324E5D3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{08DF5AA0-09BC-4A78-8E07-A7BB5021ADDA}"
 	ProjectSection(SolutionItems) = preProject

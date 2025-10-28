@@ -1,5 +1,5 @@
 using FastEndpoints;
-using MasayoshiDj.Authentication;
+using MasayoshiDj.Features.Authentication;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 var builder = WebApplication.CreateBuilder(args);

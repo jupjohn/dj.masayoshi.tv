@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace MasayoshiDj.Authentication;
+namespace MasayoshiDj.Features.Authentication;
 
 public class AuthenticationOptions : IValidatableObject, IKeyedOptions
 {

@@ -2,7 +2,7 @@ using FastEndpoints;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
-namespace MasayoshiDj.Authentication;
+namespace MasayoshiDj.Features.Authentication;
 
 public class LogoutEndpoint : EndpointWithoutRequest
 {

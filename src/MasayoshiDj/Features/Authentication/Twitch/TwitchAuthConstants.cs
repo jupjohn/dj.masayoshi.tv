@@ -1,4 +1,4 @@
-namespace MasayoshiDj.Authentication.Twitch;
+namespace MasayoshiDj.Features.Authentication.Twitch;
 
 public static class TwitchAuthConstants
 {

@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace MasayoshiDj.Authentication;
+namespace MasayoshiDj.Features.Authentication;
 
 /// <summary>
 /// DB context used (and model managed) by OpenIddict's EF integration.

@@ -11,7 +11,7 @@ using OpenIddict.Abstractions;
 using OpenIddict.Client.AspNetCore;
 using static OpenIddict.Client.AspNetCore.OpenIddictClientAspNetCoreConstants.Tokens;
 
-namespace MasayoshiDj.Authentication.Twitch;
+namespace MasayoshiDj.Features.Authentication.Twitch;
 
 public class TwitchAuthCallbackEndpoint(IOptions<TwitchAuthOptions> twitchAuthOptions) : EndpointWithoutRequest
 {

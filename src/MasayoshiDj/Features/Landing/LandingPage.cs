@@ -1,9 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
 using FastEndpoints;
-using MasayoshiDj.Authentication.Twitch;
+using MasayoshiDj.Features.Authentication.Twitch;
 using Void = FastEndpoints.Void;
 
-namespace MasayoshiDj.Landing;
+namespace MasayoshiDj.Features.Landing;
 
 // TODO(jupjohn): this is temporary. It should be served from a static HTML file
 public class LandingPage : EndpointWithoutRequest

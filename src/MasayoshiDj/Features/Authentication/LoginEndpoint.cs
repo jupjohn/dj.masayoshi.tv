@@ -1,8 +1,8 @@
 using FastEndpoints;
-using MasayoshiDj.Authentication.Twitch;
+using MasayoshiDj.Features.Authentication.Twitch;
 using Microsoft.AspNetCore.Authentication;
 
-namespace MasayoshiDj.Authentication;
+namespace MasayoshiDj.Features.Authentication;
 
 public class LoginEndpoint : EndpointWithoutRequest
 {
