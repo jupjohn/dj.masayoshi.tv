@@ -17,6 +17,9 @@ app.UseHttpsRedirection();
 
 app.UseFastEndpoints();
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 await app.InitializeAuthenticationAsync();
 
 app.Run();
