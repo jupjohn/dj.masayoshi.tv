@@ -51,7 +51,10 @@ public static class TwitchClaimsPrincipalExtensions
 {
     extension(ClaimsPrincipal principal)
     {
-        public TwitchUser? Twitch => TwitchUser.FromPrincipal(principal);
+        // TODO(jupjohn): optional
+        public TwitchUser? Twitch => principal.Identity?.IsAuthenticated is true
+            ? TwitchUser.FromPrincipal(principal)
+            : null;
     }
 }
 
