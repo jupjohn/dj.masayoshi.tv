@@ -1,6 +1,6 @@
-using System.Collections.Concurrent;
-using System.Collections.Frozen;
 using Dunet;
+using MasayoshiDj.ActorSystem.Generated;
+using Proto.Cluster;
 
 namespace MasayoshiDj.Features.Room;
 
@@ -78,32 +78,33 @@ public class RoomEndpoint : EndpointWithoutRequest
 }
 
 // TODO(jupjohn): extract out
-public class RoomExistsQuery : ICommandHandler<FindRoom, RoomResult>
+public class RoomExistsQuery(Cluster actorCluster) : ICommandHandler<FindRoom, RoomResult>
 {
-    private static readonly FrozenDictionary<string, Room> InMemoryRooms = new Dictionary<string, Room>
-    {
-        { "masayoshi", new Room { RoomId = "46673989" } }
-    }.ToFrozenDictionary();
+    private static readonly string[] TemporaryWhitelistedRooms = ["masayoshi"];
 
     public async Task<RoomResult> ExecuteAsync(FindRoom command, CancellationToken cancellation)
     {
-        // would be a DB/cache/actor lookup
-        await Task.Yield();
-        var login = command.Login;
-
         // TODO(jupjohn): move out to validator
+        var login = command.Login.ToLowerInvariant();
         if (string.IsNullOrEmpty(login))
         {
             return new RoomResult.NotFound();
         }
 
-        if (!InMemoryRooms.TryGetValue(login, out var foundRoom))
+        // NOTE(jupjohn): temp
+        if (!TemporaryWhitelistedRooms.Contains(login))
         {
             return new RoomResult.NotFound();
         }
 
-        var queue = await foundRoom.ListQueuedMedia(cancellation);
-        return new RoomResult.Found(foundRoom.RoomId, queue);
+        var queue = await actorCluster.GetRoomGrain(login).ListQueue(cancellation);
+        if (queue is null)
+        {
+            // TODO(jupjohn): handle better
+            return new RoomResult.NotFound();
+        }
+
+        return new RoomResult.Found("idk_why_we_need_the_id", queue.Media.ToArray());
     }
 }
 
@@ -115,26 +116,3 @@ public partial record RoomResult
     public partial record Found(string Id, QueueItem[] QueuedItems);
     public partial record NotFound;
 }
-
-public class Room
-{
-    private readonly ConcurrentQueue<QueueItem> _queue = new();
-
-    public required string RoomId { get; init; }
-
-    public async Task Enqueue(Uri media, CancellationToken _)
-    {
-        // NOTE(jupjohn): this media metadata fetch will happen inside an actor with the name of the media (i.e. "media-youtube-OU_M2nNErMA")
-        //      which indirectly will be persisted to DB. Treating actors as a cache layer makes life so much easier
-        await Task.Yield();
-        _queue.Enqueue(new QueueItem(media.ToString(), media));
-    }
-
-    public async Task<QueueItem[]> ListQueuedMedia(CancellationToken _)
-    {
-        await Task.Yield();
-        return _queue.ToArray();
-    }
-}
-
-public readonly record struct QueueItem(string Title, Uri? Url = null);

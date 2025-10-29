@@ -9,7 +9,7 @@ This is a plug.dj-inspired webapp with Twitch integration, for sharing music.
 - [x] Twitch auth & cookie sessions
 - [x] Basic homepage
 - [x] Basic room page
-- [ ] Virtual actor system for rooms
+- [x] Virtual actor system for rooms
 - [ ] User YT link submission to queue (with video metadata fetching for timing, title etc.)
 - [ ] Queue display (SSE)
 - [ ] YT Media player (SSE updates)
