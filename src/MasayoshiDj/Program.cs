@@ -1,9 +1,11 @@
 using MasayoshiDj;
+using MasayoshiDj.ActorSystem;
 using MasayoshiDj.Features.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddApplicationAuthentication();
+builder.AddActorSystem();
 
 builder.Services.AddSingleton(TimeProvider.System);
 builder.Services.AddFastEndpoints(options =>
@@ -13,6 +15,8 @@ builder.Services.AddFastEndpoints(options =>
 });
 
 var app = builder.Build();
+
+app.UseActorSystem();
 
 app.UseAuthentication();
 app.UseAuthorization();

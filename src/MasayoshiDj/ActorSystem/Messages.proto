@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+option csharp_namespace = "MasayoshiDj.ActorSystem.Generated";
+
+message BartResponse {
+  string the_line = 1;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "MasayoshiDj.ActorSystem.Generated";
+
+import "google/protobuf/empty.proto";
+
+import "Messages.proto";
+
+service RoomGrain {
+  rpc SayTheLineBart (google.protobuf.Empty) returns (BartResponse);
+}

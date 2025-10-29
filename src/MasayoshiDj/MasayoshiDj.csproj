@@ -16,6 +16,10 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="FastEndpoints.Security" Version="7.1.0" />
+      <PackageReference Include="Grpc.Tools" Version="2.76.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <PackageReference Include="JetBrains.Annotations" Version="2025.2.2" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.0-rc.2.25502.107">
         <PrivateAssets>all</PrivateAssets>
@@ -24,12 +28,22 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.0-rc.2.25502.107" />
       <PackageReference Include="OpenIddict.AspNetCore" Version="7.1.0" />
       <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="7.1.0" />
+      <PackageReference Include="Proto.Actor" Version="1.8.0" />
+      <PackageReference Include="Proto.Cluster" Version="1.8.0" />
+      <PackageReference Include="Proto.Cluster.CodeGen" Version="1.8.0" />
+      <PackageReference Include="Proto.Cluster.TestProvider" Version="1.8.0" />
+      <PackageReference Include="Proto.Remote" Version="1.8.0" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProtoGrain Include="ActorSystem/Grains.proto" AdditionalImportDirs="ActorSystem/" />
+        <Protobuf Include="ActorSystem/Messages.proto" />
     </ItemGroup>
 
 </Project>
