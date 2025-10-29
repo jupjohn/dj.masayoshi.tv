@@ -17,12 +17,25 @@
 <main>
     <div class="room-list">
         <h2>Following</h2>
-        <ul hx-get="/api/v1/rooms/following" hx-trigger="load" hx-sync=".user-auth-state:queue all">Loading (imagine the animation)</ul>
+        <ul hx-get="/api/v1/rooms/following"
+            hx-trigger="load"
+            hx-sync=".user-auth-state:queue all"
+            hx-boost="true"
+            style="/*temp*/ display: inline-block;"
+        >
+            Loading (imagine the animation)
+        </ul>
     </div>
     <div class="room-list">
         <!-- this could load first, the followers? -->
         <h2>Discover</h2>
-        <ul hx-get="/api/v1/rooms/discover" hx-trigger="load">Loading (imagine the animation)</ul>
+        <ul hx-get="/api/v1/rooms/discover"
+            hx-trigger="load"
+            hx-boost="true"
+            style="/*temp*/ display: inline-block;"
+        >
+            Loading (imagine the animation)
+        </ul>
     </div>
 </main>
 <footer>
