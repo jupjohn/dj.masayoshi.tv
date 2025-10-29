@@ -9,6 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Dunet" Version="1.11.3" />
       <PackageReference Include="FastEndpoints" Version="7.1.0" />
       <PackageReference Include="FastEndpoints.Generator" Version="7.1.0">
         <PrivateAssets>all</PrivateAssets>
