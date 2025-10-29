@@ -1,5 +1,3 @@
-using FastEndpoints;
-using MasayoshiDj.Features.Authentication.Twitch;
 using Microsoft.AspNetCore.Authentication;
 
 namespace MasayoshiDj.Features.Authentication;

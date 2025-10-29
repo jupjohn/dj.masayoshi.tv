@@ -1,6 +1,3 @@
-using FastEndpoints;
-using MasayoshiDj.Features.Authentication.Twitch;
-
 namespace MasayoshiDj.Features.Home;
 
 public class FollowingRoomsEndpoint : EndpointWithoutRequest

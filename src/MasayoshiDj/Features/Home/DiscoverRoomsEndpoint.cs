@@ -1,5 +1,3 @@
-using FastEndpoints;
-
 namespace MasayoshiDj.Features.Home;
 
 public class DiscoverRoomsEndpoint : EndpointWithoutRequest

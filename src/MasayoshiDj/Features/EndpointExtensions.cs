@@ -1,6 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using FastEndpoints;
-using Void = FastEndpoints.Void;
 
 namespace MasayoshiDj.Features;
 

@@ -1,4 +1,3 @@
-using FastEndpoints;
 using MasayoshiDj;
 using MasayoshiDj.Features.Authentication;
 

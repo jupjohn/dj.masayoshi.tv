@@ -1,6 +1,3 @@
-using FastEndpoints;
-using MasayoshiDj.Features.Authentication.Twitch;
-
 namespace MasayoshiDj.Features.User;
 
 // TODO(jupjohn): give this a better name
