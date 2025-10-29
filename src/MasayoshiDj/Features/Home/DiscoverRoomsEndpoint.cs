@@ -12,9 +12,7 @@ public class DiscoverRoomsEndpoint : EndpointWithoutRequest
     {
         return Send.HtmlAsync(
             """
-            <span>
-            not implemented
-            </span>
+            <a href="/~/masayoshi"><li>Masayoshi</li></a>
             """,
             cancellation
         );
