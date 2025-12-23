@@ -5,6 +5,7 @@ using Proto.Cluster;
 using Proto.Cluster.Partition;
 using Proto.Cluster.Testing;
 using Proto.DependencyInjection;
+using Proto.OpenTelemetry;
 using Proto.Remote;
 using Proto.Remote.GrpcNet;
 
@@ -22,7 +23,8 @@ public static class ActorSystemRegistrationExtensions
         {
             // NOTE(jupjohn): this was taken from protoactor's example, so defaults need to be sanity checked
             var actorSystemConfig = ActorSystemConfig
-                .Setup();
+                .Setup()
+                .WithConfigureRootContext(context => context.WithTracing());
 
             // remote configuration
             var remoteConfig = RemoteConfig
@@ -44,7 +46,7 @@ public static class ActorSystemRegistrationExtensions
                         new RoomGrainActor((context, clusterIdentity) =>
                             ActivatorUtilities.CreateInstance<RoomGrain>(provider, context, clusterIdentity)
                         )
-                    )
+                    ).WithTracing()
                 );
 
             // create the actor system
