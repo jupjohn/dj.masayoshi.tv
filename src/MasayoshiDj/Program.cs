@@ -1,8 +1,11 @@
 using MasayoshiDj;
 using MasayoshiDj.ActorSystem;
 using MasayoshiDj.Features.Authentication;
+using MasayoshiDj.Observability;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.AddOpenTelemetry();
 
 builder.AddApplicationAuthentication();
 builder.AddActorSystem();
