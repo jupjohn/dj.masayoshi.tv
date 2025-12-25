@@ -1,5 +1,4 @@
 using MasayoshiDj.ActorSystem.Generated;
-using TwitchUser = MasayoshiDj.Features.Authentication.Twitch.TwitchUser;
 
 namespace MasayoshiDj.Observability;
 
