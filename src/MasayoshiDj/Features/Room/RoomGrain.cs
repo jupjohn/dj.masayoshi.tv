@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Google.Protobuf.WellKnownTypes;
 using MasayoshiDj.ActorSystem.Generated;
+using MasayoshiDj.Observability;
 using Microsoft.AspNetCore.WebUtilities;
 using Proto;
 using Proto.Cluster;
@@ -23,10 +24,15 @@ public class RoomGrain(IContext context, ClusterIdentity identity) : RoomGrainBa
 
     public override async Task<MediaEnqueueResponse> QueueMedia(EnqueueMediaRequest request)
     {
+        // ReSharper disable once ExplicitCallerInfoArgument - TODO(jupjohn): move to .editorconfig
+        var activity = AppSource.StartActivity(ActivityNames.RoomMediaEnqueue);
+        activity?.EnrichWithRoomEnqueueMedia(request);
+
         await Task.Yield();
 
         if (!Uri.TryCreate(request.Url, UriKind.Absolute, out var mediaUri))
         {
+            activity?.AddEvent(RoomGrainEvents.MediaNotFound);
             return new MediaEnqueueResponse { Failure = "Invalid URL" };
         }
 
@@ -41,10 +47,15 @@ public class RoomGrain(IContext context, ClusterIdentity identity) : RoomGrainBa
 
         if (ytVideoId is null)
         {
+            activity?.AddEvent(RoomGrainEvents.MediaNotFound);
             return new MediaEnqueueResponse { UnsupportedMediaUrl = new Empty() };
         }
 
+        activity?.EnrichWithRoomEnqueueMediaYouTubeVideoId(ytVideoId);
+
         _tempQueue.Enqueue(new QueuedMedia($"ytid:{ytVideoId}", new Uri($"https://youtu.be/{ytVideoId}")));
+        activity?.AddEvent(RoomGrainEvents.MediaEnqueued);
+
         return new MediaEnqueueResponse { Success = new Empty() };
     }
 
